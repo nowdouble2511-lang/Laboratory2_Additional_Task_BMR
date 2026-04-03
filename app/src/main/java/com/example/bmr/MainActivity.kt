@@ -3,13 +3,16 @@ package com.example.bmr
 import android.content.Intent
 import androidx.appcompat.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bmr.R.id
@@ -87,25 +90,34 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // меню
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater;
-        inflater.inflate(R.menu.menu_bottom, menu)
+        inflater.inflate(R.menu.menu_bmr, menu)
         return true
     }
 
+    // обработка нажатия на меню
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var headerView : TextView = findViewById(R.id.text1)
-        return  when (item.itemId) {
-            R.id.open_settings -> {
-                headerView.setText("Открыть")
+        return when (item.itemId) {
+            R.id.action_marathon_info -> {
+                val intent = Intent(this, MarathonInfoActivity::class.java)
+                startActivity(intent)
                 true
             }
-            R.id.action_settings -> {
-                headerView.setText("Настройки")
-                true
-            }
-            R.id.save_settings-> {
-                headerView.setText("Сохранить")
+            R.id.action_log_bmr -> {
+                val genderText = when (selectedGender) {
+                    "women" -> "Женский"
+                    "man" -> "Мужской"
+                    else -> "Не выбран"
+                }
+
+                Log.d("BMR_CALCULATOR", "========== РЕЗУЛЬТАТЫ BMR ==========")
+                Log.d("BMR_CALCULATOR", "Пол пользователя: $genderText")
+                Log.d("BMR_CALCULATOR", "Значение BMR: ${String.format("%.2f", currentBMR)} ккал")
+                Log.d("BMR_CALCULATOR", "=====================================")
+
+                Toast.makeText(this, "Данные записаны в LOG", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -116,12 +128,12 @@ class MainActivity : AppCompatActivity() {
         selectedGender = "women"
 
         // Показываем нажатое изображение женщины
-        womenImage.visibility = android.view.View.GONE
-        womenClickedImage.visibility = android.view.View.VISIBLE
+        womenImage.visibility = View.GONE
+        womenClickedImage.visibility = View.VISIBLE
 
         // Скрываем нажатое изображение мужчины
-        manImage.visibility = android.view.View.VISIBLE
-        manClickedImage.visibility = android.view.View.GONE
+        manImage.visibility =View.VISIBLE
+        manClickedImage.visibility = View.GONE
 
         showDialog("Выбор пола", "Выбран женский пол")
     }
@@ -129,11 +141,11 @@ class MainActivity : AppCompatActivity() {
     fun selectMan() {
         selectedGender = "man"
 
-        manImage.visibility = android.view.View.GONE
-        manClickedImage.visibility = android.view.View.VISIBLE
+        manImage.visibility = View.GONE
+        manClickedImage.visibility = View.VISIBLE
 
-        womenImage.visibility = android.view.View.VISIBLE
-        womenClickedImage.visibility = android.view.View.GONE
+        womenImage.visibility = View.VISIBLE
+        womenClickedImage.visibility = View.GONE
 
         showDialog("Выбор пола", "Выбран мужской пол")
     }
@@ -218,10 +230,10 @@ class MainActivity : AppCompatActivity() {
         selectedGender = ""
         currentBMR = 0.0
 
-        womenImage.visibility = android.view.View.VISIBLE
-        womenClickedImage.visibility = android.view.View.GONE
-        manImage.visibility = android.view.View.VISIBLE
-        manClickedImage.visibility = android.view.View.GONE
+        womenImage.visibility = View.VISIBLE
+        womenClickedImage.visibility = View.GONE
+        manImage.visibility = View.VISIBLE
+        manClickedImage.visibility = View.GONE
 
         showDialog("Очистка", "Все поля очищены")
     }
