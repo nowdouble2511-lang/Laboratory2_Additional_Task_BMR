@@ -92,8 +92,14 @@ class MainActivity : AppCompatActivity() {
 
     // меню
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater;
-        inflater.inflate(R.menu.menu_bmr, menu)
+        menuInflater.inflate(R.menu.menu_bmr, menu)
+
+        // Показываем иконку меню всегда (не только при нажатии на три точки)
+        for (i in 0 until (menu?.size() ?: 0)) {
+            val item = menu?.getItem(i)
+            item?.isVisible = true
+        }
+
         return true
     }
 
