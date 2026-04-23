@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BMR_Calculation</string>
+    <string name="action_marathon_info">О марафоне</string>
+    <string name="action_log_bmr">Записать BMR в LOG</string>
+</resources>

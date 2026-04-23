@@ -14,7 +14,7 @@
         android:textSize="24dp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="16dp" />
 
     <androidx.cardview.widget.CardView
@@ -36,7 +36,7 @@
                 android:text="Сидячий образ"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:textColor="#2196F3" />
+                android:textColor="@color/blue" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                 android:text="Маленькая активность"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:textColor="#4CAF50" />
+                android:textColor="@color/green" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                 android:text="Средняя активность"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:textColor="#FF9800" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                 android:text="Сильная активность"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:textColor="#F44336" />
+                android:textColor="@color/red" />
 
             <TextView
                 android:layout_width="match_parent"

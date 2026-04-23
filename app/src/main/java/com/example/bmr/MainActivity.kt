@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         heightInput = findViewById(id.height)
@@ -101,10 +100,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_marathon_info -> {
-                val intent = Intent(this, MarathonInfoActivity::class.java)
-                startActivity(intent)
-                true
+            val intent = Intent(this, MarathonInfoActivity::class.java)
+            startActivity(intent)
+            true
             }
+
             R.id.action_log_bmr -> {
                 val genderText = when (selectedGender) {
                     "women" -> "Женский"
@@ -112,10 +112,10 @@ class MainActivity : AppCompatActivity() {
                     else -> "Не выбран"
                 }
 
-                Log.d("BMR_CALCULATOR", "========== РЕЗУЛЬТАТЫ BMR ==========")
+                Log.d("BMR_CALCULATOR", "---------- РЕЗУЛЬТАТЫ BMR ----------")
                 Log.d("BMR_CALCULATOR", "Пол пользователя: $genderText")
                 Log.d("BMR_CALCULATOR", "Значение BMR: ${String.format("%.2f", currentBMR)} ккал")
-                Log.d("BMR_CALCULATOR", "=====================================")
+                Log.d("BMR_CALCULATOR", "-------------------------------------")
 
                 Toast.makeText(this, "Данные записаны в LOG", Toast.LENGTH_SHORT).show()
                 true

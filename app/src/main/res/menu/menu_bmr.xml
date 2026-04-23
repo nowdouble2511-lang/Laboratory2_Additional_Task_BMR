@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/action_marathon_info"
-        android:title="О марафоне"
+        android:title="@string/action_marathon_info"
         android:orderInCategory="1" />
 
     <item
         android:id="@+id/action_log_bmr"
-        android:title="Записать BMR в LOG"
+        android:title="@string/action_log_bmr"
         android:orderInCategory="2" />
 
 </menu>
